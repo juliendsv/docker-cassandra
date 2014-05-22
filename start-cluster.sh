@@ -22,10 +22,10 @@ for id in $(seq 1 $NODES); do
 	else
 		ports=""
 	fi
-	cid=$(sudo docker run -d --dns 127.0.0.1 -h $hostname $ports -t cassandra:$VERSION /usr/bin/start-cassandra)
+	cid=$(docker run -d --dns 127.0.0.1 -h $hostname $ports -t cassandra:$VERSION /usr/bin/start-cassandra)
 
 	# Add network interface
 	sleep 1
-	sudo pipework $BRIDGE $cid $ip/24
+	pipework $BRIDGE $cid $ip/24
 
 done
