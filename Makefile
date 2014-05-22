@@ -12,7 +12,7 @@ ifndef VERSION
 endif
 
 image: check-version
-	sed -r -e "s/VERSION/$(VERSION)/g" install/Dockerfile.template > install/Dockerfile
-	sudo docker build -t cassandra:$(VERSION) install/
+	sed -e "s/VERSION/$(VERSION)/g" install/Dockerfile.template > install/Dockerfile
+	docker build -t cassandra:$(VERSION) install/
 	rm -f install/Dockerfile
 
