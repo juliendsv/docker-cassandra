@@ -4,7 +4,6 @@
 function test_image() {
 	version=$1
 	image=cassandra:$version
-	print $image
 	docker history $image > /dev/null 2> /dev/null
 	if [[ $? != 0 ]]; then
 		echo "Could not find Docker image $image, use 'make image VERSION=$version' to build it"
